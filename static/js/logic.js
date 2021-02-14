@@ -25,3 +25,19 @@ d3.json(link, function (data) {
 			latitude: geometry["1"],
             depth: geometry["1"],
 		};
+        //Add circles to markers. 
+		var latlng = L.latLng(coords.latitude, coords.longitude);
+		var circle = L.circle(latlng, {
+			color: getColor(magnitude),
+			fillColor: getColor(magnitude),
+			fillOpacity: 1,
+			radius: magnitude * 15000,
+		}).addTo(myMap);
+
+        //Add tool tip and pop up information to each earthquake marker
+        //CLICK HAS TO BE ON DEAD CENTER!!
+		L.circle(latlng)
+			.bindPopup(
+				`<h1>${place}</h1> <hr> <h3>Magnitude: ${magnitude}</h3> <h3>Depth: ${coords.depth}</h3>`
+			)
+			.addTo(myMap);
