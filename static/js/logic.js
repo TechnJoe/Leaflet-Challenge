@@ -32,7 +32,9 @@ d3.json(link, function (data) {
 			fillColor: getColor(magnitude),
 			fillOpacity: 1,
 			radius: magnitude * 15000,
-		}).addTo(myMap);
+        })  
+            .addTo(myMap);
+    
 
         //Add tool tip and pop up information to each earthquake marker
         //CLICK HAS TO BE ON DEAD CENTER!!
@@ -41,3 +43,30 @@ d3.json(link, function (data) {
 				`<h1>${place}</h1> <hr> <h3>Magnitude: ${magnitude}</h3> <h3>Depth: ${coords.depth}</h3>`
 			)
 			.addTo(myMap);
+    
+          //Add Legend 
+          var legend = L.control({ position: "bottomright" });
+          legend.onAdd = function (myMap) {
+              var div = L.DomUtil.create("div", "info legend"),
+                  colors = ["green", "yellow", "orange", "red"],
+                  labels = ["< 1.0", "1.0 - 2.0", "2.0 - 3.0", "> 3.0"];
+              div.innerHTML += "<h4 style = 'color: #fff'>Magnitude</h4>";
+      
+              // loop through our density intervals and generate a label with a colored square for each interval
+              for (var i = 0; i < labels.length; i++) {
+                  div.innerHTML +=
+                      '<i style="background:' +
+                      colors[i] +
+                      '">' +
+                      labels[i] +
+                      "</i> <br>";
+              }
+              return div;
+          };
+          legend.addTo(myMap);
+
+
+
+
+    }
+})
