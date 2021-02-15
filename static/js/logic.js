@@ -43,30 +43,46 @@ d3.json(link, function (data) {
 				`<h1>${place}</h1> <hr> <h3>Magnitude: ${magnitude}</h3> <h3>Depth: ${coords.depth}</h3>`
 			)
 			.addTo(myMap);
-    
-          //Add Legend 
-          var legend = L.control({ position: "bottomright" });
-          legend.onAdd = function (myMap) {
-              var div = L.DomUtil.create("div", "info legend"),
-                  colors = ["green", "yellow", "orange", "red"],
-                  labels = ["< 1.0", "1.0 - 2.0", "2.0 - 3.0", "> 3.0"];
-              div.innerHTML += "<h4 style = 'color: #fff'>Magnitude</h4>";
-      
-              // loop through our density intervals and generate a label with a colored square for each interval
-              for (var i = 0; i < labels.length; i++) {
-                  div.innerHTML +=
-                      '<i style="background:' +
-                      colors[i] +
-                      '">' +
-                      labels[i] +
-                      "</i> <br>";
-              }
-              return div;
-          };
+            }
+            //Add Legend 
+            var legend = L.control({ position: "bottomright" });
+            legend.onAdd = function (myMap) {
+                var div = L.DomUtil.create("div", "info legend"),
+                    colors = ["green", "yellow", "orange", "red"],
+                    labels = ["< 1.0", "1.0 - 2.0", "2.0 - 3.0", "> 3.0"];
+                div.innerHTML += "<h4 style = 'color: #fff'>Magnitude</h4>";
+        
+                // loop through our density intervals and generate a label with a colored square for each interval
+                for (var i = 0; i < labels.length; i++) {
+                    div.innerHTML +=
+                        '<i style="background:' +
+                        colors[i] +
+                        '">' +
+                        labels[i] +
+                        "</i> <br>";
+                }
+                return div;
+            };
           legend.addTo(myMap);
 
+                 
+});          
+    //Assign colors 
+          function getColor(mag) {
+            var color = "";
+            if (mag <= 1) {
+                color = "green";
+            } else if (mag > 1 && mag <= 2) {
+                color = "yellow";
+            } else if (mag > 2 && mag <= 3) {
+                color = "orange";
+            } else if (mag > 3) {
+                color = "red";
+            }
+            return color;  
+        }       
 
 
 
-    }
-})
+
+    
