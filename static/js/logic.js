@@ -28,7 +28,7 @@ d3.json(link, function (data) {
         //Add circles to markers. 
 		var latlng = L.latLng(coords.latitude, coords.longitude);
         	var circle = L.circleMarker(latlng, {
-			color:"#000000",
+			color:"##00FF7F",
 			fillColor: getColor(coords.depth),
 			fillOpacity: 1,
 			radius: magnitude * 4,
@@ -42,60 +42,46 @@ d3.json(link, function (data) {
             }
             
             //Add Legend 
-        //     var legend = L.control({ position: "bottomright" });
-        //     legend.onAdd = function (myMap) {
-        //         var div = L.DomUtil.create("div", "info legend"),
-        //             colors = ["green", "yellow", "orange", "red"],
-        //             labels = ["< 1.0", "1.0 - 2.0", "2.0 - 3.0", "> 3.0"];
-        //         div.innerHTML += "<h4 style = 'color: #fff'>Magnitude</h4>";
+            var legend = L.control({ position: "bottomright" });
+            legend.onAdd = function (myMap) {
+                var div = L.DomUtil.create("div", "info legend"),
+                    colors = ["pink", "yellow", "orange", "Green", "Blue", "Brown", "Red"],
+                    labels = ["< -10", "-10 - 10", "10 - 30", "30 - 50", "50 - 70", "70 - 90", "> 90"];
+                div.innerHTML += "<h4 style = 'color: #fff'>Depth</h4>";
         
-        //         // loop through our density intervals and generate a label with a colored square for each interval
-        //         for (var i = 0; i < labels.length; i++) {
-        //             div.innerHTML +=
-        //                 '<i style="background:' +
-        //                 colors[i] +
-        //                 '">' +
-        //                 labels[i] +
-        //                 "</i> <br>";
-        //         }
-        //         return div;
-        //     };
-        //   legend.addTo(myMap);
+                // loop through our density intervals and generate a label with a colored square for each interval
+                for (var i = 0; i < labels.length; i++) {
+                    div.innerHTML +=
+                        '<i style="background:' +
+                        colors[i] +
+                        '">' +
+                        labels[i] +
+                        "</i> <br>";
+                }
+                return div;
+            };
+          legend.addTo(myMap);
 
                  
  });          
     //Assign colors 
-
-        //   function getColor(mag) {
-        //     var color = "";
-        //     if (mag <= 1) {
-        //         color = "green";
-        //     } else if (mag > 1 && mag <= 2) {
-        //         color = "yellow";
-        //     } else if (mag > 2 && mag <= 3) {
-        //         color = "orange";
-        //     } else if (mag > 3) {
-        //         color = "red";
-        //     }
-        //     return color;  
-        // } 
         
         function getColor(depth) {
             var color = "";
             if (depth <= -10) {
-                color = "green";
+                color = "Pink";
             } else if (depth > -10 && depth <= 10) {
-                color = "yellow";
+                color = "Yellow";
             } else if (depth > 10 && depth <= 30) {
-                color = "orange";
+                color = "Orange";
             } else if (depth > 30 && depth <= 50) {
-                color = "brown";
+                color = "Green";
             }else if (depth > 50 && depth <= 70) {
-                color = "purple";
+                color = "Blue";
             }else if (depth > 70 && depth <= 90) {
-                    color = "red";   
+                    color = "Brown";   
             }else if (depth > 90) {
-                color = "black";
+                color = "Red";
             }
             console.log(depth,color)
 
