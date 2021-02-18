@@ -7,7 +7,7 @@ var myMap = L.map("map", {
 // Create the tile layer that will be the background of the world map displaying earthquakes
 L.tileLayer(
 	"https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?" +
-		"access_token=pk.eyJ1IjoidmFyc2hhcmFtYWNoIiwiYSI6ImNqbnhyeGJsejAzaXgza28wcjRhNHNjMm0ifQ.H9CPMe-YN9zMVYFJIdB4aA"
+		"access_token=pk.eyJ1Ijoiam9hbGV4IiwiYSI6ImNranp1ZHgybzA1cXkydnF0amtjYmc2NWoifQ.4e5Unn4Xg2TzpvdepTRTEA"
 ).addTo(myMap);
 
 // JSON link
