@@ -47,7 +47,7 @@ d3.json(link, function (data) {
                 var div = L.DomUtil.create("div", "info legend"),
                     colors = ["pink", "yellow", "orange", "Green", "Blue", "Brown", "Red"],
                     labels = ["< -10", "-10 - 10", "10 - 30", "30 - 50", "50 - 70", "70 - 90", "> 90"];
-                div.innerHTML += "<h4 style = 'color: #fff'>Depth</h4>";
+                div.innerHTML += "<h4 style = 'color: #ff00ff'>Depth Legend</h4>";
         
                 // loop through our density intervals and generate a label with a colored square for each interval
                 for (var i = 0; i < labels.length; i++) {
