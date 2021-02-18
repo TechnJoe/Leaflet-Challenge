@@ -61,7 +61,6 @@ d3.json(link, function (data) {
                 return div;
             };
           legend.addTo(myMap);
-
                  
  });          
     //Assign colors 
